@@ -2,15 +2,15 @@ package Ejercicios.Actividad6_1;
 
 //1. ¿Cuál es el nombre en Java de la clase que define las excepciones, y de la que debe heredar cualquier clase
 // que queramos usar para representar una excepción?
-    //La clase "Exception", se añade con 'extends Exception'
+    //La clase "Exception" o "throwable".
 
 //2. ¿Cuál es el nombre en Java de la clase que representa las excepciones que se producen al invocar un
 // método de un objeto cuyo valor es “null”?
-    //NullPointerException
+    //NullPointerException.
 
 //3. ¿Cuál es el nombre en Java de la clase que representa las excepciones que se producen al obtener un
 // comportamiento anómalo en la entrada / salida de información?
-    //
+    //IOException.
 
 
 public class Main {
@@ -21,8 +21,8 @@ public class Main {
         //System.out.println (array_string [3].length());
         //¿Qué excepción se produciría en el mismo?
             /*
-            Se produciría un NullPointerException, ya que el 'sout' apunta a una posición del array vacía,
-            lo que hace que devuelva null.
+            Se produciría un NullPointerException, ya que no se han añadido valores al array, por lo que está
+             lleno de nulos, lo que hace que devuelva null.
             */
 
 
@@ -47,24 +47,26 @@ public class Main {
          */
 
         String cadena = "Hola";
-        int entero = 2;
+        int entero = -1;
 
         try{
             char caracter = caracterEn(cadena, entero);
             System.out.println("El caracter de la posición introducida es " + "'" + caracter + "'");
         } catch (Exception excepcion) {
+            excepcion.printStackTrace();
             System.out.println(excepcion.getMessage());
         }
 
 
     }
 
-    public static char caracterEn (String cadena, int entero) throws Exception{
-        Integer longitudCadena = cadena.length();
-        if (entero >= 0 && entero < longitudCadena){
-            return cadena.charAt(entero - 1);
-        } else {
-            throw new Exception("El entero dado es mayor a la longitud de la cadena");
+    public static char caracterEn (String cadena, int entero) throws IllegalArgumentException{
+        if (entero >= 0 && entero < cadena.length()){
+            return cadena.charAt(entero);
+        } else if (entero < 0){
+            throw new IllegalArgumentException("El entero dado es menor a la longitud de la cadena");
+        } else{
+            throw new IllegalArgumentException("El entero dado es mayor a la longitud de la cadena");
         }
 
     }
