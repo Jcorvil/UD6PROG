@@ -12,7 +12,7 @@ public class Main {
         System.out.println(fibonacci(7));
         System.out.println("•:•:•:•:•:•:•:•:•:•");
         System.out.println("Ejercicio 4");
-
+        System.out.println(MaxComDiv(8, 4));
         System.out.println("•:•:•:•:•:•:•:•:•:•");
 
 
@@ -59,6 +59,12 @@ public class Main {
     //Crea un método que calcule el máximo común divisor (MCD) de dos números enteros (utilizando la división euclídea).
     //El algoritmo que hay que implementar se conoce como algoritmo de euclides, tal vez os suene de algo.
 
-
+    public static int MaxComDiv (int num1, int num2){
+        if(num2 == 0 || num1 == 0){
+            return num1;
+        } else {
+            return MaxComDiv(num2, num1 % num2);
+        }
+    }
 
 }
