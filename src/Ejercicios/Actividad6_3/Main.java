@@ -23,4 +23,9 @@ public class Main {
     //Ejercicio 2
 
 
+    //Ejercicio 3
+    //Por lógica pensaría que si debería llevar mas tiempo, cuantos más datos deba analizar el algoritmo "numeroMayor",
+    //mas tiempo debería tardar en recorrer el array. Aun asi, al ser un programa muy liviano con una sola función,
+    //la diferencia de tiempo es ínfima.
+
 }
