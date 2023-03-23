@@ -4,14 +4,13 @@ import java.util.Arrays;
 
 public class ProblemaMochila extends EsquemaVoraz {
 
-    private Integer max;
-    private int n;
-    int cantidadObjetos;
-    private int[] peso;
-    private int[] valores;
-    Integer pesoActual;
+    private Double max;
+    private Double n;
+    private Double[] peso;
+    private Double[] valores;
+    Double pesoActual;
 
-    public ProblemaMochila(int n, Integer max) {
+    public ProblemaMochila(Double n, Double max, Double[] peso, Double[]valores) {
         this.n = n;
         this.max = max;
         this.peso = peso;
@@ -23,7 +22,7 @@ public class ProblemaMochila extends EsquemaVoraz {
     protected void inicializa(){
         solucion = new Object[peso.length];
         Arrays.fill(solucion, 0);
-        pesoActual = 0;
+        pesoActual = Double.valueOf(0);
     }
 
     @Override
@@ -33,16 +32,15 @@ public class ProblemaMochila extends EsquemaVoraz {
 
     @Override
     protected void seleccionaYEliminaCandidatos() {
-        int i = 1;
-        Integer mayor = valores[i]/peso[i];
-        for (i = 0; i < n; i++) {
-            if (mayor < valores[i]/peso[i]){
-                mayor = valores[i]/peso[i];
+        Double mayor = Double.valueOf(valores[0])/peso[0];
+        etapa = 0;
+        for (int i = 1; i < n; i++) {
+            if (mayor < Double.valueOf(valores[etapa])/peso[etapa]){
+                mayor = Double.valueOf(valores[etapa])/peso[etapa];
+                etapa = i;
             }
         }
-        candidato = mayor;
-        etapa = i;
-        valores[etapa] = 0;
+        valores[etapa] = Double.valueOf(0);
     }
 
     @Override
@@ -52,8 +50,13 @@ public class ProblemaMochila extends EsquemaVoraz {
 
     @Override
     protected void anotaEnSolucion(){
-
+        if (pesoActual + peso[etapa] <= max){
+            candidato = 1;
+        } else {
+            candidato = Double.valueOf(max - pesoActual) / peso[etapa];
+        }
+        solucion[etapa] = candidato;
+        pesoActual = Double.valueOf(pesoActual) + candidato * Double.valueOf(peso[etapa]);
     }
-
 
 }

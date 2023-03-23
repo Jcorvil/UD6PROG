@@ -1,5 +1,7 @@
 package Ejercicios.Actividad6_4;
 
+import java.util.Arrays;
+
 public class Main {
 
     //Dados n objetos de peso w[1..n] y valores v[1..n] y una mochila de peso máximo m, calcular las facciones
@@ -17,10 +19,12 @@ public class Main {
     public static void main(String[] args) {
         int pesoMaximo = 100;
         int cantidadObjetos = 5;
-        int[] peso = {10, 20, 30, 40, 50};
-        int[] valores = {20, 30, 66, 40, 60};
+        Double[] peso = {10d, 20d, 30d, 40d, 50d};
+        Double[] valores = {20d, 30d, 66d, 40d, 60d};
 
-
+        ProblemaMochila pmf = new ProblemaMochila(cantidadObjetos, pesoMaximo, peso, valores);
+        pmf.voraz();
+        System.out.println(Arrays.toString(pmf.solucion));
 
     }
 }
