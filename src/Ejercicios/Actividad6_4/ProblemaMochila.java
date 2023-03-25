@@ -44,10 +44,16 @@ public class ProblemaMochila extends EsquemaVoraz {
     }
 
     @Override
+    protected void anotaEnSolucion() {
+
+    }
+
+    @Override
     protected boolean esPrometedor(){
         return true;
     }
 
+    /*
     @Override
     protected void anotaEnSolucion(){
         if (pesoActual + peso[etapa] <= max){
@@ -58,5 +64,5 @@ public class ProblemaMochila extends EsquemaVoraz {
         solucion[etapa] = candidato;
         pesoActual = Double.valueOf(pesoActual) + candidato * Double.valueOf(peso[etapa]);
     }
-
+     */
 }

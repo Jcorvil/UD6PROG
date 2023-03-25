@@ -22,9 +22,10 @@ public class Main {
         Double[] peso = {10d, 20d, 30d, 40d, 50d};
         Double[] valores = {20d, 30d, 66d, 40d, 60d};
 
+        /*
         ProblemaMochila pmf = new ProblemaMochila(cantidadObjetos, pesoMaximo, peso, valores);
         pmf.voraz();
         System.out.println(Arrays.toString(pmf.solucion));
-
+        */
     }
 }
